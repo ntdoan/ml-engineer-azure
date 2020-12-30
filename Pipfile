@@ -6,9 +6,12 @@ name = "pypi"
 [packages]
 sklearn = "*"
 azureml = "*"
+azureml-core = "*"
 pandas = "*"
 
 [dev-packages]
+loguru = "*"
+ipython = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.6"
