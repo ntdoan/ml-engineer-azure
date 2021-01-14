@@ -45,7 +45,7 @@ def clean_data(data):
 
     y_df = x_df.pop("y").apply(lambda s: 1 if s == "yes" else 0)
     return x_df, y_df
-    
+
 x, y = clean_data(ds)
 
 # TODO: Split data into train and test sets.
@@ -64,6 +64,9 @@ def main():
     parser.add_argument('--C', type=float, default=1.0, help="Inverse of regularization strength. Smaller values cause stronger regularization")
     parser.add_argument('--max_iter', type=int, default=100, help="Maximum number of iterations to converge")
 
+    parser.add_argument('--model_dir', type=str, help="Location to save the model")
+    parser.add_argument('--model_name', type=str, help="name of the persisted model")
+    
     args = parser.parse_args()
 
     run.log("Regularization Strength:", np.float(args.C))
@@ -73,6 +76,14 @@ def main():
 
     accuracy = model.score(x_test, y_test)
     run.log("Accuracy", np.float(accuracy))
+    if args.model_name and args.model_dir:
+        model_path = os.path.join(
+            args.model_dir, 
+            args.model_name + ".pkl"
+        )
+        joblib.dump(model, model_path)
+        print("Saving model to as {}".format(model_path))
+
 
 if __name__ == '__main__':
     main()
