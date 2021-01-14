@@ -8,10 +8,11 @@ sklearn = "*"
 azureml = "*"
 azureml-core = "*"
 pandas = "*"
+azureml-dataprep = "*"
+ipython = "*"
+ipykernel = "*"
 
 [dev-packages]
-loguru = "*"
-ipython = "*"
 
 [requires]
 python_version = "3.6"
