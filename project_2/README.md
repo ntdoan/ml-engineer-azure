@@ -89,6 +89,10 @@ After the pipeline was submitted as a run, we published it so that it may be rer
 
 ![Run status of pipeline shown in Jupyter notebook](screenshots/published_pipeline_run_status.png)
 
+![Published pipeline active](screenshots/published_pipeline_active.png)
+*Published pipeline with `ACTIVE` status in Azure ML studio*
+
+
 
 ### Trigger pipeline run with a http request
 We tested the published pipeline by triggering it using an external http post request. The request contained the endpoint itself, an authentication header, and a json payload object. Successful test resulted in a pipeline experiment's run, as can be seen below. 
