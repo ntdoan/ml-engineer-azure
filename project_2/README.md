@@ -94,11 +94,14 @@ After the pipeline was submitted as a run, we published it so that it may be rer
 
 
 
+
 ### Trigger pipeline run with a http request
 We tested the published pipeline by triggering it using an external http post request. The request contained the endpoint itself, an authentication header, and a json payload object. Successful test resulted in a pipeline experiment's run, as can be seen below. 
 
 ![Pipeline trigged with a http request](screenshots/pipeline_trigged_experiment_running_status.png)
 
+![Pipeline experiment completed](screenshots/pipeline_experiments_completed_status.png)
+*Two pipeline runs in two different experiments, one created when submitting the pipeline and one triggered by the http post request on the published pipeline, both of which were successfully completed.*
 
 ## Areas for improvement
 
