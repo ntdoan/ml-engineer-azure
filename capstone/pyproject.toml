@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "capstone"
+version = "0.1.0"
+description = "Package for capstone project of ML Engineer for Azure Udacity course"
+authors = ["Nhat Trung Doan <dnhattrung@gmail.com>"]
+include = ["capstone"]
+
+[tool.poetry.dependencies]
+python = "^3.7.1"
+h5py = "^3.1.0"
+matplotlib = "^3.3.4"
+numpy = "^1.20.0"
+pandas = "^1.2.1"
+seaborn = "^0.11.1"
+azureml = "^0.2.7"
+az = "^0.1.0-alpha.1"
+scikit-learn = "^0.24.1"
+jupyterlab = "^3.0.7"
+
+[tool.poetry.dev-dependencies]
+ipykernel = "^5.4.3"
+loguru = "^0.5.3"
+jupyterlab = "^3.0.7"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

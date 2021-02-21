@@ -1,0 +1,61 @@
+{
+    "operating conditions": [
+        "alt",
+        "Mach",
+        "TRA",
+        "T2"
+    ],
+    "monitoring sensors": [
+        "T24",
+        "T30",
+        "T48",
+        "T50",
+        "P15",
+        "P2",
+        "P21",
+        "P24",
+        "Ps30",
+        "P40",
+        "P50",
+        "Nf",
+        "Nc",
+        "Wf"
+    ],
+    "virtual sensors": [
+        "T40",
+        "P30",
+        "P45",
+        "W21",
+        "W22",
+        "W25",
+        "W31",
+        "W32",
+        "W48",
+        "W50",
+        "SmFan",
+        "SmLPC",
+        "SmHPC",
+        "phi"
+    ],
+    "health parameters": [
+        "fan_eff_mod",
+        "fan_flow_mod",
+        "LPC_eff_mod",
+        "LPC_flow_mod",
+        "HPC_eff_mod",
+        "HPC_flow_mod",
+        "HPT_eff_mod",
+        "HPT_flow_mod",
+        "LPT_eff_mod",
+        "LPT_flow_mod"
+    ],
+    "RUL": [
+        "RUL"
+    ],
+    "aux": [
+        "unit",
+        "cycle",
+        "Fc",
+        "hs"
+    ]
+}
