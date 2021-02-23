@@ -1,0 +1,14 @@
+channels:
+- conda-forge
+dependencies:
+- python=3.6.2
+- pip:
+  - azureml-core==1.21.0.post1
+  - azureml-defaults==1.21.0
+  - azureml-telemetry==1.21.0
+  - azureml-train-restclients-hyperdrive==1.21.0
+  - azureml-train-core==1.21.0
+  - scipy==1.2.1
+  - joblib==0.13.2
+  - scikit-learn
+name: azureml_3d6fa1d835846f1a28a18b506bcad70f
