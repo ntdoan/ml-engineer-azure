@@ -140,17 +140,16 @@ We setup the AutoML experiment with the following configurations:
 *Run details shown in experiment notebook using the `RunDetails` widget*.
 
 
-![azureml-bestmodel](screenshots/azureml-bestmodel-with-runid.png)
-*The best model returned by AutoML*
-
-
 ### Results
 
 The best model obtained with the AutoML experiment, which yielded a normalized root mean squared error of `0.1129` (and a root mean squared error of `9.9`), was a pipeline comprising a default `datatransformer` step followed by a [StackEnsemble regressor](https://docs.microsoft.com/en-us/azure/machine-learning/concept-automated-ml#ensemble). In particular, the stack ensamble model consists of a meta-learner, `ElasticNetCV` elastic net regression model with iterative fitting along a regularization path, trained based on the outputs of an ensemble of base learners, including the `LightGBMRegressor`, as can be seen below.
 
 
 ![azureml-bestmodel](screenshots/azureml-bestmodel-with-runid.png)
-*Best model returned by AutoML.*
+*The best model returned by the AutoML experiment*
+
+![azureml-bestmodel-with-id](screenshots/azureml-deployed-endpoint.png)
+*The best AutoML model registered in Azure ML Studio with its registered model ID as well as the ID of the AutoML run that generated the model*.
 
 ![azureml-bestmodel-parameters](screenshots/azureml-bestmodel-with-parameters.png)
 *Parameters of the `StackEnsemble` regression model*.
@@ -166,8 +165,8 @@ The `RandomParameterSampling` was used as it randomly searches the parameter spa
 The `Bandit` policy was used for early stopping policy. It terminates runs where the primary metric, accuracy in this case, is not within the predefined a slack amount compared to the best performing run.
 
 
-![hyperdrive-runwidget](screenshots/azureml-runwidget-training-run.png)
-*Run details of the HyperDrive experiment as shown using the `RunDetails` widget*.
+![hyperdrive-runwidget](screenshots/hyperdrive_complete_run_id.png)
+*Run details of the HyperDrive experiment as shown using the `RunDetails` widget in the Jupyter notebook [hyperdrive.ipynb](hyperdrive.ipynb). The best run was run #84*.
 
 
 ### Results
@@ -175,6 +174,8 @@ The `Bandit` policy was used for early stopping policy. It terminates runs where
 The model with the best performance (`rmse=8.42`) had the optimal parameters of 500 for `n_estimators` and 20 for `max_depth`.
 
 ![hyperdrive-bestmodel](screenshots/hyperdrive-child-runs-studio-view.png)
+*Run details of the HyperDrive experiment as shown in Azure ML studio. The best run was run #84.*
+
 
 ## Future improvements
 
@@ -204,10 +205,21 @@ One advantage of the AutoML model is that it is ready to be deployed once found,
 The mode was deployed as an endpoint with key-based authentication as well as Application Insights enabled. The deployment was done using Azure ML Studio and the Application Insights was enabled using the [logs.py](logs.py) script.
 
 ![hyperdrive-deployed-endpoint](screenshots/hyperdrive-deployed-endpoint.png)
-*AutoML model deployed as an endpoint.*
+*HyperDrive model deployed as an endpoint.*
 
 ### Testing
-Testing of the deployed endpoint was performed using a http post request with two sampled data, as implimented in [test_endpoint_hyperdrive.py](test_endpoint_hyperdrive.py). The test was successful as evidenced by the following screenshot showing two expected results in the response.
+Testing of the deployed endpoint/webservice was performed using a http post request with two sampled data, as implimented in [test_endpoint_hyperdrive.py](test_endpoint_hyperdrive.py).
+
+The above script was used to send a post request to the deployed webservice using `urllib.request.Request(url, body, headers)`.
+
+where: 
+- `url` is the url of the webservice,
+- `body` is the payload that contains two samples,
+- `headers` contains the primary key for bearer authentication.
+
+With the two-sample payload, we would expect to receive a list of two estimates of remaining useful life from the service.
+
+The test was successful as evidenced by the following screenshot showing two expected results in the response.
 
 ![endpoind_tested](screenshots/hyperdrive-endpoint-tested.png)
 
@@ -215,4 +227,4 @@ Testing of the deployed endpoint was performed using a http post request with tw
 
 ## Screen Recording
 
-A demo of the completed project can be seen at this [Youtube video](https://www.youtube.com/watch?v=-Kb6v3Q4q98).
+A demo of the completed project can be seen at this [Youtube video](https://www.youtube.com/watch?v=N0CTfE_V-0w).

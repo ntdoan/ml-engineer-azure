@@ -1,4 +1,5 @@
 from pathlib import Path
+
 data_version = "resolution=5min"
 ROOT_DIR = Path(__file__).resolve().parent.parent
 
